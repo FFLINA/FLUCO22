@@ -20,7 +20,7 @@ public class StageWarp : MonoBehaviour
     {
         if(other.transform.CompareTag("Player"))
         {
-            GameManager.Instance.NextStage();
+            //GameManager.Instance.NextStage();
         }
     }
 }
