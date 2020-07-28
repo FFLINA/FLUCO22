@@ -23,6 +23,9 @@ public class Pet : MonoBehaviour
     // 펫한테 명령을 내리면 아이템을 가져오고 갱신된 petPosition에 놓고 대기
     //
 
+
+    // BUG : 펫이 벽을 뚫고 이동하는 버그
+
     public float speed = 3f;
     Vector3 direction;
     Rigidbody rb;
@@ -64,7 +67,6 @@ public class Pet : MonoBehaviour
         }
         else
         {
-
             rb.velocity = Vector3.zero;
             transform.position += direction * speed * Time.deltaTime;
             // 목적지를 향해 날라가고 있다
@@ -89,6 +91,7 @@ public class Pet : MonoBehaviour
                     {
                         selectedItem.transform.parent = selectedItem.GetComponent<Item>().originParent;
                         selectedItem.transform.GetComponent<Rigidbody>().useGravity = true;
+                        selectedItem.transform.GetComponent<Item>().IsGrabed = false;
                     }
                 }
             }
@@ -111,6 +114,8 @@ public class Pet : MonoBehaviour
                 print("컴온");
                 selectedItem.transform.parent = transform;
                 selectedItem.transform.GetComponent<Rigidbody>().useGravity = false;
+                selectedItem.transform.GetComponent<Item>().IsGrabed = true;
+
                 // 복귀하고싶다 - 펫포지션을 목적지로
                 destination = petPosition.position; // 목적지
                 direction = destination - transform.position; // 방향

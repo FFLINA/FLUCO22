@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\01.Scripts\01_StartRoom\Flower.cs" />
+    <Compile Include="Assets\01.Scripts\01_StartRoom\Flowerpot.cs" />
     <Compile Include="Assets\01.Scripts\Billboard.cs" />
     <Compile Include="Assets\01.Scripts\BlinkLight.cs" />
     <Compile Include="Assets\01.Scripts\CatchCollider.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Assets\01.Scripts\RightController.cs" />
     <Compile Include="Assets\01.Scripts\Stage1_PuzzleTrigger.cs" />
     <Compile Include="Assets\01.Scripts\StageWarp.cs" />
+    <Compile Include="Assets\StartRoomDoor.cs" />
     <None Include="Assets\03.Materials\UI-Default.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
