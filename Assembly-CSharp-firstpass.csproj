@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1DA774B7-F085-0FC5-971A-EA3B07B6786D}</ProjectGuid>
+    <ProjectGuid>{D3B67E65-A35C-66AE-5557-B947E49D5383}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-firstpass</AssemblyName>
@@ -252,7 +252,7 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
     </Reference>
     <Reference Include="Valve.Newtonsoft.Json">
-      <HintPath>C:/Unity/Fluco Player/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
+      <HintPath>C:/Unity/FLUCO22/Assets/SteamVR/Input/Plugins/JSON.NET/Valve.Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="netstandard">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/NetStandard/ref/2.0.0/netstandard.dll</HintPath>
@@ -600,52 +600,52 @@
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline.Editor">
-      <HintPath>C:/Unity/Fluco Player/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+      <HintPath>C:/Unity/FLUCO22/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:/Unity/Fluco Player/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+      <HintPath>C:/Unity/FLUCO22/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
-      <HintPath>C:/Unity/Fluco Player/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+      <HintPath>C:/Unity/FLUCO22/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:/Unity/Fluco Player/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+      <HintPath>C:/Unity/FLUCO22/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Timeline">
-      <HintPath>C:/Unity/Fluco Player/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+      <HintPath>C:/Unity/FLUCO22/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
     </Reference>
     <Reference Include="Unity.CollabProxy.Editor">
-      <HintPath>C:/Unity/Fluco Player/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+      <HintPath>C:/Unity/FLUCO22/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Rider.Editor">
-      <HintPath>C:/Unity/Fluco Player/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+      <HintPath>C:/Unity/FLUCO22/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
-      <HintPath>C:/Unity/Fluco Player/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+      <HintPath>C:/Unity/FLUCO22/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.UI">
-      <HintPath>C:/Unity/Fluco Player/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+      <HintPath>C:/Unity/FLUCO22/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="SteamVR_Actions.csproj">
-      <Project>{B823DFBE-C406-603C-74E5-212CE59CB94A}</Project>
+      <Project>{CD4C346E-FE62-1606-D6D0-99DE418DAED3}</Project>
       <Name>SteamVR_Actions</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR_Input_Editor.csproj">
-      <Project>{5B6D8B1E-51F5-5458-CA32-AF7A4FA0FFD7}</Project>
+      <Project>{24ED91BD-25C2-5CB6-0282-115C36666878}</Project>
       <Name>SteamVR_Input_Editor</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR_Editor.csproj">
-      <Project>{CAC76406-F001-6B9D-3AAB-CF2C36DD08C3}</Project>
+      <Project>{526CB400-0C5A-7277-7F3D-07C9C0C7942E}</Project>
       <Name>SteamVR_Editor</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR.csproj">
-      <Project>{A9BE4969-7CE6-3267-E603-5B82E91EA249}</Project>
+      <Project>{1FEFEF46-C721-8E83-5617-B494B5A86EFE}</Project>
       <Name>SteamVR</Name>
     </ProjectReference>
     <ProjectReference Include="SteamVR_Windows_EditorHelper.csproj">
-      <Project>{A7ADFB22-BD8F-4E97-112F-9E247C63FC04}</Project>
+      <Project>{3C5FADB4-D740-A5A7-8750-FD28B2A7433F}</Project>
       <Name>SteamVR_Windows_EditorHelper</Name>
     </ProjectReference>
   </ItemGroup>

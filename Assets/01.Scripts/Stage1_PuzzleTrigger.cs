@@ -50,6 +50,6 @@ public class Stage1_PuzzleTrigger : MonoBehaviour
 
     void Stage1_SetTrigger()
     {
-        PuzzleManager.Instance.StageOneOnTrigger();
+        //PuzzleManager.Instance.StageOneOnTrigger();
     }
 }

@@ -2,71 +2,67 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PuzzleManager : MonoBehaviour
 {
+    // 현재 씬에 따라
+    // 해당 씬의 퍼즐을 체크하고 조건 완료시 스테이지 클리어
+    // 스테이지 클리어 시 다음 방으로 갈 수 있게 문이 열리고 이동 트리거 등장
+
     public static PuzzleManager Instance;
     private void Awake()
     {
         Instance = this;
     }
 
-    Vector3 stageOneDoorUpPosition;
-    Vector3 stageTwoDoorUpPosition;
-    bool stageOneClear = false;
-    bool stageTwoClear = false;
-    public GameObject stageOneDoor;
-    public GameObject stageTwoDoor;
-
-    //cuttingImage의 자식이 없으면 퍼즐이 완료된걸로 판단
-    public GameObject cuttingImage;
-
-    // Start is called before the first frame update
-    void Start()
+    int sceneIndex;
+    private void Start()
     {
-        stageOneDoorUpPosition = stageOneDoor.transform.position + (Vector3.up * 5f);
-        stageTwoDoorUpPosition = stageTwoDoor.transform.position + (Vector3.up * 5f);
-
+        sceneIndex = SceneManager.GetActiveScene().buildIndex;
     }
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
-        if(stageOneClear)
+        switch (sceneIndex)
         {
-            stageOneDoor.transform.position = Vector3.Lerp(stageOneDoor.transform.position, stageOneDoorUpPosition, Time.deltaTime * 0.5f);
-        }
+            case 0: // Intro
+                break;
 
-        //GetComponentsInChildren에 본인도 포함되기때문에 Length가 1인가로 체크
-        if (cuttingImage.GetComponentsInChildren<Transform>().Length == 1)
-        {
-            //문 여는거 들어가면됨
-            stageTwoDoor.transform.position = Vector3.Lerp(stageTwoDoor.transform.position, stageTwoDoorUpPosition, Time.deltaTime * 0.5f);
-        }
+            case 1: // FirstRoom
+                CheckFirstRoom();
+                break;
 
-        //if (stageTwoClear)
-        {
+            case 2: // SecondRoom
+                CheckSecondRoom();
+                break;
 
-            
-        }
-    }
-    int stageOneSolveCount = 2;
-    int stageOneCount;
+            case 3: // EndingRoom
+                CheckEndingRoom();
+                break;
 
+            case 4: // Outro
+                break;
 
-    internal void StageOneOnTrigger()
-    {
-        stageOneCount++;
-        if (stageOneSolveCount == stageOneCount)
-        {
-            stageOneClear = true;
+            default:
+                break;
         }
     }
 
-
-    internal void StageOneOffTrigger()
+    private void CheckFirstRoom()
     {
-        stageOneCount--;
-        if (stageOneCount < 0)
-            stageOneCount = 0;
+        // 첫번째 방의 퍼즐을 계속 체크
+    }
+
+    private void CheckSecondRoom()
+    {
+        // 두번째 방의 퍼즐을 계속 체크
+
+    }
+
+    private void CheckEndingRoom()
+    {
+        // 엔딩 방의 퍼즐을 계속 체크
+
     }
 }
