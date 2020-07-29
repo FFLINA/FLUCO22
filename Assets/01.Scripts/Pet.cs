@@ -80,11 +80,11 @@ public class Pet : MonoBehaviour
                 destination = petPosition.transform.position;
                 direction = destination - transform.position;
                 //목적지와의 거리
-                print("달려");
+                //print("달려");
                 float distance = Vector3.Distance(transform.position, petPosition.transform.position);
                 if (distance <= 0.3f)
                 {
-                    print("멈춰");
+                    //print("멈춰");
                     moving = false;
                     returning = false;
                     if(selectedItem != null)

@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/00.Scenes/01_StartRoom.unity
+- path: Assets/00.Scenes/02_FirstPuzzleRoom.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0

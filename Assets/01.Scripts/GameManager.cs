@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
-{
+public class GameManager : MonoBehaviour {
     // 게임매니저
     // 이전, 다음 씬으로 넘기는 기능
 
@@ -14,40 +13,36 @@ public class GameManager : MonoBehaviour
     // 로드
     // 넘어갈 씬의 저장된 데이터를 읽고 그대로 로드 (예정)
 
-
+    public int roomNumberCheck;
     public static GameManager Instance;
-    private void Awake()
-    {
+    private void Awake() {
         Instance = this;
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        roomNumberCheck = SceneManager.GetActiveScene().buildIndex;
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
 
     }
 
-    public void SaveStage(int index)
-    {
+    public void SaveStage(int index) {
         // TODO : 현재 스테이지의 상태를 세이브
 
     }
 
-    public void LoadStage(int index)
-    {
+    public void LoadStage(int index) {
         // TODO : 바꿀 스테이지의 상태를 로드
+        SceneManager.LoadScene(index);
 
 
     }
 
-    public void StageChange(int sceneIndex)
-    {
+    public void StageChange(int sceneIndex) {
         int curIndex = SceneManager.GetActiveScene().buildIndex;
         SaveStage(curIndex);
 
