@@ -49,9 +49,25 @@ public class PuzzleManager : MonoBehaviour
         }
     }
 
-    private void CheckFirstRoom()
-    {
+    public bool sylingeGrabed;
+    public bool wakeUp1;
+    public bool wakeUp2;
+    private void CheckFirstRoom() {
         // 첫번째 방의 퍼즐을 계속 체크
+        // 현재 wakeUp을 체크하는게 따로 없으므로 Inspector에서 직접 체크하면서 테스트하였음.
+        if (wakeUp1) {
+            UIManager.Instance.WakeUp1();
+            wakeUp1 = false;
+        }
+        if (wakeUp2) {
+            UIManager.Instance.WakeUp2();
+            wakeUp2 = false;
+        }
+
+        if (sylingeGrabed) {
+            UIManager.Instance.SylingeGrabed();
+        }
+
     }
 
     private void CheckSecondRoom()
