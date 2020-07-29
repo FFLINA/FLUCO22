@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AudioManager;
 
 public class StartRoomDoor : MonoBehaviour
 {
@@ -17,9 +18,8 @@ public class StartRoomDoor : MonoBehaviour
         if(keyTrigger)
         {
             // rotation 이 0에서 -120까지 lerp
-            transform.rotation = Quaternion.Lerp(transform.rotation
-                , Quaternion.Euler(0, 0, -100f)
-                , Time.deltaTime * 0.5f);
+            //transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.Euler(0, 0, -100f), Time.deltaTime * 0.5f);
+            transform.position = Vector3.Lerp(transform.position, Vector3.down * 5f, Time.deltaTime * 0.5f);
         }
     }
 
@@ -28,8 +28,15 @@ public class StartRoomDoor : MonoBehaviour
     {
         if(other.gameObject.name.Contains("Key"))
         {
-            keyTrigger = true;
-            warp.SetActive(true);
+            AudioManager.Instance.PlayEffect(EffectClipsEnum.SFX_KeyUsing);
+            Invoke("DoorOpen", 1f);
         }
+    }
+
+    void DoorOpen()
+    {
+        keyTrigger = true;
+        AudioManager.Instance.PlayEffect(EffectClipsEnum.SFX_DoorOpen);
+        warp.SetActive(true);
     }
 }

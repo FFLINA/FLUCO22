@@ -70,7 +70,7 @@ public class PuzzleManager : MonoBehaviour
 
         if (curTime >= startTime)
         {
-            //UIManager.Instance.StartUIPopUp();
+            UIManager.Instance.StartUIPopUp();
             curTime = 0;
             startFlag = true;
         }
@@ -79,7 +79,7 @@ public class PuzzleManager : MonoBehaviour
         {
             if (sylingeFirstGrab)
             {
-                //UIManager.Instance.SylingeUIPopUp();
+                UIManager.Instance.SylingeUIPopUp();
                 sylingeFirstGrab = false;
             }
         }

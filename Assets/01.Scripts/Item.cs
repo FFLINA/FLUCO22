@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+using static AudioManager;
 
 public class Item : MonoBehaviour
 {
@@ -34,12 +36,12 @@ public class Item : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         float power = transform.GetComponent<Rigidbody>().velocity.magnitude;
-        if(power >= 0.4f)
+        if(power >= 0.1f)
         {
+            print("power : " + power);
             // 이 아이템이 가지고 있는 재질 속성에 맞는
             // 충돌 사운드 플레이
+            AudioManager.Instance.PlayEffect(EffectClipsEnum.SFX_ItemCollision, power);
         }
-        
     }
-
 }

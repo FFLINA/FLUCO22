@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static AudioManager;
 
 public class Flower : MonoBehaviour
 {
@@ -15,7 +16,8 @@ public class Flower : MonoBehaviour
     {
         // 그래픽 연출
         transform.GetComponent<Renderer>().material.color = Color.red;
-
+        AudioManager.Instance.PlayEffect(EffectClipsEnum.SFX_FlowerBlossom);
+        
         Invoke("CreateKey", 2f);
         // 자신의 상단부에 키 생성
     }
@@ -25,5 +27,7 @@ public class Flower : MonoBehaviour
         firstPuzzleKey.transform.position = transform.position + Vector3.up;
         //firstPuzzleKey.GetComponent<Rigidbody>().isKinematic = false;
         firstPuzzleKey.SetActive(true);
+        AudioManager.Instance.PlayEffect(EffectClipsEnum.SFX_KeyPopUp);
+
     }
 }

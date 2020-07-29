@@ -80,6 +80,7 @@
     <Compile Include="Assets\01.Scripts\Stage1_PuzzleTrigger.cs" />
     <Compile Include="Assets\01.Scripts\StageWarp.cs" />
     <Compile Include="Assets\01.Scripts\UIManager.cs" />
+    <Compile Include="Assets\AudioManager.cs" />
     <Compile Include="Assets\StartRoomDoor.cs" />
     <None Include="Assets\03.Materials\UI-Default.shader" />
     <Reference Include="UnityEngine">
