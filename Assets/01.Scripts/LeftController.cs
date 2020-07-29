@@ -68,19 +68,16 @@ public class LeftController : MonoBehaviour
         if (isTriggeredItem)
         {
             TriggerButtonUpdate();
+            //if (triggeredItem.GetComponent<Item>().IsGrabed == false)
+            //{
+            //}
         }
         else if (Physics.Raycast(transform.position, transform.forward, out hitInfo, maxDistance))
         {
             line.SetPosition(1, new Vector3(0, 0, hitInfo.distance));
 
-            if (hitInfo.transform.gameObject.layer == 8) //ground
-            {
-                TeleportButtonUpdate();
-            }
-            else if (hitInfo.transform.CompareTag("Item"))
-            {
-                GrabButtonUpdate();
-            }
+            TeleportButtonUpdate();
+            GrabButtonUpdate();
         }
     }
 
@@ -100,6 +97,13 @@ public class LeftController : MonoBehaviour
 
 
     // BUG : 아이템 여러번 그랩 시 부모가 CameraRig로 바뀌는 버그
+    // BUG : 아이템 그랩 도중 부모가 바뀌는 버그
+    // FIX?
+
+    // BUG : 한손으로 잡은 상태에서 다른 손으로 잡으면 위치는 다른손으로 바뀌지만 원래 손이 StateUP된 순간 떨어짐
+    // -> Item의 IsGrabed 가 true인 상태면 안잡히는 걸로
+    // FIX?
+
     private void TriggerButtonUpdate()
     {
         if (trigger.GetStateDown(leftHand) && isTriggeredItem)
@@ -110,6 +114,7 @@ public class LeftController : MonoBehaviour
             triggeredItem.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             triggeredItem.transform.GetComponent<Item>().IsGrabed = true;
             triggeredItem.transform.parent = transform;
+            GrabedItemCheck();
 
         }
         else if (trigger.GetState(leftHand) && isTriggeredItem)
@@ -136,7 +141,21 @@ public class LeftController : MonoBehaviour
         }
     }
 
-    // BUG : 펫 명령 시 라인렌더러 안보이는 버그
+    private void GrabedItemCheck()
+    {
+        // 그랩된 아이템을 체크하는 함수
+        // 퍼즐의 열쇠나 특정 트리거를 위해 처음 잡았을 때 어떤 아이템을 잡았는지 체크함
+        switch (triggeredItem.name)
+        {
+            case "Sylinge":
+                PuzzleManager.Instance.sylingeGrabed = true;
+                break;
+
+            default:
+                break;
+        }
+    }
+
     private void GrabButtonUpdate()
     {
         // 그랩버튼 - 펫한테 아이템가져오라고 명령
@@ -149,43 +168,56 @@ public class LeftController : MonoBehaviour
         {
             line.enabled = false;
             line.material.color = color;
-            print("펫 작동");
-            pet.transform.GetComponent<Pet>().GoToItem(hitInfo.transform.gameObject);
+
+            if (hitInfo.transform.CompareTag("Item"))
+            {
+                print("펫 작동");
+                pet.transform.GetComponent<Pet>().GoToItem(hitInfo.transform.gameObject);
+            }
         }
     }
-
-    // BUG : 텔레포트 누른 상태로 땅이 아닌 곳을 조준했을 시 포인터가 안사라지는 버그
 
     private void TeleportButtonUpdate()
     {
         if (teleport.GetStateDown(leftHand))
         {
-            pointer.SetActive(true);
             line.enabled = true;
             line.material.color = clickedColor;
+
+            if (hitInfo.transform.gameObject.layer == 8) //ground
+            {
+                pointer.SetActive(true);
+            }
         }
         else if (teleport.GetState(leftHand))
         {
-            pointer.transform.position = hitInfo.point + (hitInfo.normal * 0.01f);
-            pointer.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
+            if (hitInfo.transform.gameObject.layer == 8) //ground
+            {
+                pointer.SetActive(true);
+                pointer.transform.position = hitInfo.point + (hitInfo.normal * 0.01f);
+                pointer.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
+            }
+            else
+            {
+                pointer.SetActive(false);
+            }
         }
         else if (teleport.GetStateUp(leftHand))
         {
             line.enabled = false;
             line.material.color = color;
             pointer.SetActive(false);
-            SteamVR_Fade.Start(Color.black, 0);
-            StartCoroutine(this.Teleport(hitInfo.point));
+
+            if (hitInfo.transform.gameObject.layer == 8) //ground
+            {
+                SteamVR_Fade.Start(Color.black, 0);
+                StartCoroutine(this.Teleport(hitInfo.point));
+            }
         }
     }
 
     IEnumerator Teleport(Vector3 point)
     {
-        // 포인터 위치로 순간 이동 
-        //transform.parent.position = point;
-
-        //shouldTeleport = false;
-        //reticle.SetActive(false);
         Vector3 difference = cameraRigTransform.position - headTransform.position;
         difference.y = 0;
         cameraRigTransform.position = point + difference;

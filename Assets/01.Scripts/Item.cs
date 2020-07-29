@@ -28,6 +28,18 @@ public class Item : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        float power = transform.GetComponent<Rigidbody>().velocity.magnitude;
+        if(power >= 0.4f)
+        {
+            // 이 아이템이 가지고 있는 재질 속성에 맞는
+            // 충돌 사운드 플레이
+        }
+        
     }
 
 }

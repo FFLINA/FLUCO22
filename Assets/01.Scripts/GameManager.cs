@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     {
         // TODO : 바꿀 스테이지의 상태를 로드
 
+
     }
 
     public void StageChange(int sceneIndex)

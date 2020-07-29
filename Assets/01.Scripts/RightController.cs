@@ -68,34 +68,27 @@ public class RightController : MonoBehaviour
         if (isTriggeredItem)
         {
             TriggerButtonUpdate();
+            //if (triggeredItem.GetComponent<Item>().IsGrabed == false)
+            //{
+            //}
         }
         else if (Physics.Raycast(transform.position, transform.forward, out hitInfo, maxDistance))
         {
             line.SetPosition(1, new Vector3(0, 0, hitInfo.distance));
 
-            if (hitInfo.transform.gameObject.layer == 8) //ground
-            {
-                TeleportButtonUpdate();
-            }
-            else if (hitInfo.transform.CompareTag("Item"))
-            {
-                GrabButtonUpdate();
-            }
+            TeleportButtonUpdate();
+            GrabButtonUpdate();
         }
     }
 
-    
+
     private void OnTriggerEnter(Collider item)
     {
-        if (item.transform.CompareTag("Item"))
-        {
-            isTriggeredItem = true;
-            triggeredItem = item.gameObject;
-        }
-        if(isTriggeredItem)
-        {
-            // 
-        }
+        if (!item.transform.CompareTag("Item"))
+            return;
+
+        isTriggeredItem = true;
+        triggeredItem = item.gameObject;
     }
 
     Transform itemOriginParent;
@@ -113,6 +106,7 @@ public class RightController : MonoBehaviour
             triggeredItem.transform.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             triggeredItem.transform.GetComponent<Item>().IsGrabed = true;
             triggeredItem.transform.parent = transform;
+            GrabedItemCheck();
 
         }
         else if (trigger.GetState(rightHand) && isTriggeredItem)
@@ -138,6 +132,22 @@ public class RightController : MonoBehaviour
             triggeredItem.GetComponent<Item>().Shoot(dir, dist);
         }
     }
+
+    private void GrabedItemCheck()
+    {
+        // 그랩된 아이템을 체크하는 함수
+        // 퍼즐의 열쇠나 특정 트리거를 위해 처음 잡았을 때 어떤 아이템을 잡았는지 체크함
+        switch (triggeredItem.name)
+        {
+            case "Sylinge":
+                PuzzleManager.Instance.sylingeGrabed = true;
+                break;
+
+            default:
+                break;
+        }
+    }
+
     private void GrabButtonUpdate()
     {
         // 그랩버튼 - 펫한테 아이템가져오라고 명령
@@ -150,30 +160,50 @@ public class RightController : MonoBehaviour
         {
             line.enabled = false;
             line.material.color = color;
-            print("펫 작동");
-            pet.transform.GetComponent<Pet>().GoToItem(hitInfo.transform.gameObject);
+
+            if (hitInfo.transform.CompareTag("Item"))
+            {
+                print("펫 작동");
+                pet.transform.GetComponent<Pet>().GoToItem(hitInfo.transform.gameObject);
+            }
         }
     }
     private void TeleportButtonUpdate()
     {
         if (teleport.GetStateDown(rightHand))
         {
-            pointer.SetActive(true);
             line.enabled = true;
             line.material.color = clickedColor;
+
+            if (hitInfo.transform.gameObject.layer == 8) //ground
+            {
+                pointer.SetActive(true);
+            }
         }
         else if (teleport.GetState(rightHand))
         {
-            pointer.transform.position = hitInfo.point + (hitInfo.normal * 0.01f);
-            pointer.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
+            if (hitInfo.transform.gameObject.layer == 8) //ground
+            {
+                pointer.SetActive(true);
+                pointer.transform.position = hitInfo.point + (hitInfo.normal * 0.01f);
+                pointer.transform.rotation = Quaternion.LookRotation(hitInfo.normal);
+            }
+            else
+            {
+                pointer.SetActive(false);
+            }
         }
         else if (teleport.GetStateUp(rightHand))
         {
             line.enabled = false;
             line.material.color = color;
             pointer.SetActive(false);
-            SteamVR_Fade.Start(Color.black, 0);
-            StartCoroutine(this.Teleport(hitInfo.point));
+
+            if (hitInfo.transform.gameObject.layer == 8) //ground
+            {
+                SteamVR_Fade.Start(Color.black, 0);
+                StartCoroutine(this.Teleport(hitInfo.point));
+            }
         }
     }
 

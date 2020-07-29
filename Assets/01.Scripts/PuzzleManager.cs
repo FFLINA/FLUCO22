@@ -50,24 +50,39 @@ public class PuzzleManager : MonoBehaviour
     }
 
     public bool sylingeGrabed;
+    bool sylingeFirstGrab = true;
     public bool wakeUp1;
     public bool wakeUp2;
-    private void CheckFirstRoom() {
-        // 첫번째 방의 퍼즐을 계속 체크
-        // 현재 wakeUp을 체크하는게 따로 없으므로 Inspector에서 직접 체크하면서 테스트하였음.
-        if (wakeUp1) {
-            UIManager.Instance.WakeUp1();
-            wakeUp1 = false;
-        }
-        if (wakeUp2) {
-            UIManager.Instance.WakeUp2();
-            wakeUp2 = false;
+
+    /// <summary>
+    /// 어두웠던 화면이 밝아지면서 게임 시작
+    /// 게임시작 후 5초 후에 wakeUp 1 표시
+    /// 
+    /// </summary>
+    /// 
+    float startTime = 5f;
+    float curTime;
+    bool startFlag;
+    private void CheckFirstRoom()
+    {
+        if (startFlag == false)
+            curTime += Time.deltaTime;
+
+        if (curTime >= startTime)
+        {
+            //UIManager.Instance.StartUIPopUp();
+            curTime = 0;
+            startFlag = true;
         }
 
-        if (sylingeGrabed) {
-            UIManager.Instance.SylingeGrabed();
+        if (sylingeGrabed)
+        {
+            if (sylingeFirstGrab)
+            {
+                //UIManager.Instance.SylingeUIPopUp();
+                sylingeFirstGrab = false;
+            }
         }
-
     }
 
     private void CheckSecondRoom()
