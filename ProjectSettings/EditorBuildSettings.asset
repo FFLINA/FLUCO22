@@ -8,4 +8,19 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00.Scenes/00_Intro.unity
     guid: 8147c643291dcb14ba445ddece99eb17
+  - enabled: 1
+    path: Assets/00.Scenes/01_StartRoom.unity
+    guid: 49ffcde8c20ea4c46b4daf2b45f1186e
+  - enabled: 1
+    path: Assets/00.Scenes/02_FirstPuzzleRoom.unity
+    guid: e1ead448feb11814b8292089978ddcc1
+  - enabled: 1
+    path: Assets/00.Scenes/03_SecondPuzzleRoom.unity
+    guid: 49d470da0c7f23649812e4b11b460e48
+  - enabled: 1
+    path: Assets/00.Scenes/04_EndingRoom.unity
+    guid: f780836e44f137e41993eadd0cd0093c
+  - enabled: 1
+    path: Assets/00.Scenes/05_Outro.unity
+    guid: d2ce79a84b3768142acc2c1062a7ab54
   m_configObjects: {}
