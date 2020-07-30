@@ -70,18 +70,18 @@
     <Compile Include="Assets\01.Scripts\CatchCollider.cs" />
     <Compile Include="Assets\01.Scripts\Controller.cs" />
     <Compile Include="Assets\01.Scripts\FollowCamera.cs" />
-    <Compile Include="Assets\01.Scripts\GameManager.cs" />
     <Compile Include="Assets\01.Scripts\Item.cs" />
     <Compile Include="Assets\01.Scripts\Jigsaw.cs" />
     <Compile Include="Assets\01.Scripts\LeftController.cs" />
+    <Compile Include="Assets\01.Scripts\Managers\AudioManager.cs" />
+    <Compile Include="Assets\01.Scripts\Managers\GameManager.cs" />
+    <Compile Include="Assets\01.Scripts\Managers\PuzzleManager.cs" />
+    <Compile Include="Assets\01.Scripts\Managers\UIManager.cs" />
     <Compile Include="Assets\01.Scripts\Pet.cs" />
-    <Compile Include="Assets\01.Scripts\PuzzleManager.cs" />
     <Compile Include="Assets\01.Scripts\RightController.cs" />
     <Compile Include="Assets\01.Scripts\Stage1_PuzzleTrigger.cs" />
     <Compile Include="Assets\01.Scripts\StageWarp.cs" />
-    <Compile Include="Assets\01.Scripts\UIManager.cs" />
-    <Compile Include="Assets\AudioManager.cs" />
-    <Compile Include="Assets\StartRoomDoor.cs" />
+    <Compile Include="Assets\01.Scripts\StartRoomDoor.cs" />
     <None Include="Assets\03.Materials\UI-Default.shader" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.3.14f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
