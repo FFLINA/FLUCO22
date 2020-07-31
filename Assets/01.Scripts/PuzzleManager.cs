@@ -88,6 +88,7 @@ public class PuzzleManager : MonoBehaviour
     private void CheckSecondRoom()
     {
         // 두번째 방의 퍼즐을 계속 체크
+        // 비밀번호 입력 및 화면 터치를 캔버스로?
 
     }
 
