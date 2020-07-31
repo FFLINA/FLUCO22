@@ -84,10 +84,17 @@ public class PuzzleManager : MonoBehaviour
             }
         }
     }
+    internal bool room2_computerKeypadCheck;
+    internal bool room2_doorKeypadCheck;
 
+    public GameObject room2_Monitor;
     private void CheckSecondRoom()
     {
         // 두번째 방의 퍼즐을 계속 체크
+        if (room2_computerKeypadCheck == true) {
+            //computerKeypad에 답을 입력하면 음악파일이 있는 모니터 출력
+            room2_Monitor.SetActive(true);
+        }
         // 비밀번호 입력 및 화면 터치를 캔버스로?
 
     }
